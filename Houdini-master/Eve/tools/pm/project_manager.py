@@ -1,4 +1,4 @@
-import os
+import sys, os
 import sqlite3
 import subprocess
 import webbrowser
@@ -21,8 +21,10 @@ from ui import ui_shot
 from ui import ui_shot_properties
 from ui import ui_pm_add_shot
 
-from core.database import entities
-from core.database import eve_data
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
+from core.database import *
+#from core.database import eve_data
 from core import settings
 from core import models
 
@@ -368,8 +370,8 @@ class ProjectManager(QtWidgets.QMainWindow,  ui_pm_main.Ui_ProjectManager):
         self.btn_project_update = 'Update Project'
 
         # SETUP ENVIRONMENT
-        os.environ['EVE_ROOT'] = os.environ['EVE_ROOT'].replace('\\', '/')
-        self.eve_root = os.environ['EVE_ROOT']  # E:/Eve/Eve
+#        os.environ['EVE_ROOT'] = os.environ['EVE_ROOT'].replace('\\', '/')
+#        self.eve_root = os.environ['EVE_ROOT']  # E:/Eve/Eve
 
         # Load Eve DB
         # Create database file if not exists (first time Project Manager launch)
